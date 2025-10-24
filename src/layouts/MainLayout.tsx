@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
+import { Outlet } from "react-router";
 
 const MainLayout = () => {
   return (
@@ -17,7 +18,7 @@ const MainLayout = () => {
 
         {/* Main content */}
         <main className="bg-[#252A30] rounded-2xl p-6 overflow-auto">
-          <h1 className="text-white text-xl font-semibold">Main Content</h1>
+          <Outlet />
         </main>
       </div>
     </div>

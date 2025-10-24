@@ -1,6 +1,10 @@
+import Customers from "@/components/Customers";
+
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
-export default Home
+    <div>
+      <Customers />
+    </div>
+  );
+};
+export default Home;

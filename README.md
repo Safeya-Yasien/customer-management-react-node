@@ -74,12 +74,26 @@ export default defineConfig([
 
 # Next Steps
 
-- build main layout with tailwind
-  - add sidebar
-  - add search bar
+- build main layout with tailwind ✅
+  - add sidebar ✅
+    - handle active link ✅
+    - handle h1 name
+    - enhance sidebar
+    -
+  - add search bar ✅
+    - add search functions
 - home page
-  - add customers table
-- build add customers form
-  - add form
+  - add customers table ✅
+    - add pagination
+    - display real data
+    - add actions functions
+- build add customers form ✅
+
+  - add form ✅
+  - add validation
+  - add submit function
+
+- install nodejs, express, mongodb, mongoose, dotenv,
+-
 
 # Features

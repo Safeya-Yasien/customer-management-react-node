@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import MainLayout from "@layouts/MainLayout";
-import AddCustomersForm from "@pages/AddCustomersForm";
+import AddCustomerForm from "@/pages/AddCustomerForm";
 import Home from "@/pages/Home";
 
 const router = createBrowserRouter([
@@ -13,8 +13,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "add-customers",
-        element: <AddCustomersForm />,
+        path: "add-customer",
+        element: <AddCustomerForm />,
       },
     ],
   },

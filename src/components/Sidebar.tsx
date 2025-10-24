@@ -1,5 +1,5 @@
 import { House, UserRoundPlus } from "lucide-react";
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 
 const Sidebar = () => {
   return (
@@ -10,22 +10,34 @@ const Sidebar = () => {
 
       <ul className="flex flex-col gap-4 px-4">
         <li>
-          <Link
+          <NavLink
             to="/"
-            className="text-gray-400 hover:text-white flex items-center gap-2"
+            className={({ isActive }: { isActive: boolean }) =>
+              `flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
+                isActive
+                  ? "bg-blue-600 text-white font-semibold shadow-md"
+                  : "text-gray-400 hover:text-white hover:bg-[#2A2F36]"
+              }`
+            }
           >
             <House className="w-4 h-4" />
             Home
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link
-            to="/add-customers"
-            className="text-gray-400 hover:text-white flex items-center gap-2"
+          <NavLink
+            to="/add-customer"
+            className={({ isActive }: { isActive: boolean }) =>
+              `flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 ${
+                isActive
+                  ? "bg-blue-600 text-white font-semibold shadow-md"
+                  : "text-gray-400 hover:text-white hover:bg-[#2A2F36]"
+              }`
+            }
           >
             <UserRoundPlus className="w-4 h-4" />
             Add Customers
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </div>

@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose, { Schema } from "mongoose";
+import validator from "validator";
 
 interface ICustomer {
   firstName: string;
@@ -9,15 +10,37 @@ interface ICustomer {
   gender: string;
 }
 
-const customerSchema = new mongoose.Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  email: { type: String, required: true },
-  phone: { type: String, required: true },
+const customerSchema = new Schema<ICustomer>({
+  firstName: {
+    type: String,
+    required: [true, "Please enter a first name"],
+    minlength: 2,
+    maxlength: 20,
+  },
+  lastName: {
+    type: String,
+    required: [true, "Please enter a last name"],
+    minlength: 2,
+    maxlength: 20,
+  },
+  email: {
+    type: String,
+    required: [true, "Please enter an email"],
+    unique: true,
+    minlength: 5,
+    maxlength: 20,
+    lowercase: true,
+    validate: [validator.isEmail, "Please enter a valid email"],
+  },
+  phone: {
+    type: String,
+    required: [true, "Please enter a phone number"],
+    validate: [validator.isMobilePhone, "Please enter a valid phone number"],
+  },
   country: { type: String },
   gender: { type: String },
 });
 
 const Customer = mongoose.model("Customer", customerSchema);
 
-module.exports = Customer;
+export default Customer;

@@ -16,7 +16,7 @@ createRoot(document.getElementById("root")!).render(
       <AppRouter />
       <ToastContainer
         position="bottom-right"
-        autoClose={1500}
+        autoClose={2000}
         closeOnClick={true}
       />
     </QueryClientProvider>

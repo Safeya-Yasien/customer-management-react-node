@@ -12,6 +12,7 @@ const AddCustomerForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<ICustomerForm>({
     resolver: zodResolver(CustomerSchema),
   });
@@ -26,10 +27,13 @@ const AddCustomerForm = () => {
         body: JSON.stringify(newCustomer),
       });
     },
+    onSuccess: () => {
+      toast.success("Customer added successfully!");
+      reset();
+    },
   });
   const onSubmit = async (data) => {
     mutation.mutate(data);
-    toast.success("Customer added successfully!");
   };
 
   return (

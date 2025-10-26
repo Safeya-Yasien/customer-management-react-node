@@ -3,6 +3,7 @@ import { CustomerSchema, type ICustomerForm } from "@/schemas/customerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const apiURL = `${import.meta.env.VITE_API_URL}/customers`;
 
@@ -28,6 +29,7 @@ const AddCustomerForm = () => {
   });
   const onSubmit = async (data) => {
     mutation.mutate(data);
+    toast.success("Customer added successfully!");
   };
 
   return (

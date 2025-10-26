@@ -16,9 +16,9 @@ const corsOptions = {
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
-app.use("/api/customers", cors(corsOptions), customerRoutes);
+app.use("/api/customers", customerRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

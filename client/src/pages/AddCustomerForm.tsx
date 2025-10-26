@@ -1,18 +1,10 @@
 import InputFiled from "@/components/InputFiled";
 import { CustomerSchema, type ICustomerForm } from "@/schemas/customerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 
-// const defaultValues: ICustomerForm = {
-//   firstName: "",
-//   lastName: "",
-//   gender: "",
-//   country: "",
-//   age: 16,
-//   phone: "",
-//   email: "",
-// };
+const apiURL = `${import.meta.env.VITE_API_URL}/customers`;
 
 const AddCustomerForm = () => {
   const {
@@ -21,10 +13,22 @@ const AddCustomerForm = () => {
     formState: { errors },
   } = useForm<ICustomerForm>({
     resolver: zodResolver(CustomerSchema),
-    // defaultValues: defaultValues,
   });
 
-  const onSubmit = (data) => console.log(data);
+  const mutation = useMutation({
+    mutationFn: async (newCustomer) => {
+      return await fetch(`${apiURL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newCustomer),
+      });
+    },
+  });
+  const onSubmit = async (data) => {
+    mutation.mutate(data);
+  };
 
   return (
     <div className="bg-[#252A30]  p-8">

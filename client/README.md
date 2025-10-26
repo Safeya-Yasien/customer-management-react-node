@@ -127,5 +127,7 @@ export default defineConfig([
 - add edit action
 - add edit action in customer details page
 - add customer page logic
+  - add customer added success toast
+  - handle place of add customer button margin top
 - add delete all customers button in home page
 - add search logic

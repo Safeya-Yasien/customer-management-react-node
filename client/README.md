@@ -96,9 +96,14 @@ export default defineConfig([
 - install nodejs, express, mongodb, mongoose, dotenv,
 -
 
+
 # why i install react query or tanstack query
 
-- i use it because it's the best library with backend endpoints
+- i use it because it's the best library with backend endpoints https://tanstack.com/query/latest/docs/framework/react/installation
+
+# how to make quires appear in devtools
+
+- by installing react query devtools https://tanstack.com/query/v5/docs/framework/react/devtools
 
 # import variables from .env in react vite
 
@@ -131,3 +136,10 @@ export default defineConfig([
   - handle place of add customer button margin top
 - add delete all customers button in home page
 - add search logic
+
+
+# What i used for the first time
+
+- react-query = tanstack
+- react-toastify
+- 

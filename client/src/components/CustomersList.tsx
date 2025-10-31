@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 
 const apiURL = `${import.meta.env.VITE_API_URL}/customers`;
 
-const Customers = () => {
+const CustomersList = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
@@ -34,8 +34,14 @@ const Customers = () => {
     navigate(`/customers/${id}`);
   };
 
+  const editCustomer = (id: string) => {
+    navigate(`/customers/edit-customer/${id}`);
+  };
+
   if (isPending) return <p>Loading...</p>;
   if (error) return <p>Error loading customers</p>;
+
+  if (!customers?.data) return <p>No customers found</p>;
 
   return (
     <div className="bg-[#252A30] rounded-2xl p-6 overflow-auto h-full">
@@ -67,7 +73,10 @@ const Customers = () => {
               <td className="p-3">{customer.age}</td>
               <td className="p-3">{customer.createdAt}</td>
               <td className="p-3 flex space-x-2">
-                <button className="cursor-pointer px-3 py-1 bg-blue-600 rounded-md text-white text-sm hover:bg-blue-500 flex items-center gap-1">
+                <button
+                  onClick={() => editCustomer(customer.id)}
+                  className="cursor-pointer px-3 py-1 bg-blue-600 rounded-md text-white text-sm hover:bg-blue-500 flex items-center gap-1"
+                >
                   Edit
                 </button>
                 <button
@@ -91,4 +100,4 @@ const Customers = () => {
   );
 };
 
-export default Customers;
+export default CustomersList;

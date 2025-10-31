@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import MainLayout from "@layouts/MainLayout";
-import AddCustomerForm from "@/pages/AddCustomerForm";
 import Home from "@/pages/Home";
 import CustomerDetailsPage from "@/pages/CustomerDetails";
+import AddCustomerPage from "@/pages/AddCustomer";
 
 const router = createBrowserRouter([
   {
@@ -14,8 +14,12 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "add-customer",
-        element: <AddCustomerForm />,
+        path: "customers/add-customer",
+        element: <AddCustomerPage />,
+      },
+      {
+        path: "customers/edit-customer/:id",
+        element: <AddCustomerPage />,
       },
       {
         path: "customers/:id",

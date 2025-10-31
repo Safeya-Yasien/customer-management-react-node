@@ -78,24 +78,23 @@ export default defineConfig([
   - add sidebar ✅
     - handle active link ✅
     - handle h1 name
-    - enhance sidebar
+    - enhance sidebar ✅
     -
   - add search bar ✅
     - add search functions
 - home page
   - add customers table ✅
     - add pagination
-    - display real data
-    - add actions functions
+    - display real data ✅
+    - add actions functions ✅
 - build add customers form ✅
 
   - add form ✅
-  - add validation
-  - add submit function
+  - add validation ✅
+  - add submit function ✅
 
 - install nodejs, express, mongodb, mongoose, dotenv,
 -
-
 
 # why i install react query or tanstack query
 
@@ -116,6 +115,8 @@ export default defineConfig([
 
 # how to add customer using react query
 
+- useMutation to add customer
+
 # how to delete customer using react query
 
 - useMutation to delete customer
@@ -129,17 +130,23 @@ export default defineConfig([
 
 - add view action ✔️
 - add delete action ✔️
-- add edit action
-- add edit action in customer details page
+- add edit action ✔️
+- ## add edit action in customer details page
 - add customer page logic ✔️
   - add customer added success toast ✔️
   - handle place of add customer button margin top
 - add delete all customers button in home page
 - add search logic
 
-
 # What i used for the first time
 
 - react-query = tanstack
 - react-toastify
-- 
+-
+
+# What i learned
+
+- how to use react query
+- how to use react toastify
+- how to integrate react with nodejs and express
+-

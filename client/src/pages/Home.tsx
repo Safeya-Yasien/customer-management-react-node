@@ -1,9 +1,9 @@
-import Customers from "@/components/Customers";
+import CustomersList from "@/components/CustomersList";
 
 const Home = () => {
   return (
     <div>
-      <Customers />
+      <CustomersList />
     </div>
   );
 };

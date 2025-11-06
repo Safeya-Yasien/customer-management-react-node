@@ -36,3 +36,20 @@
 # how to convert mongo timestamp to last update such as "a few seconds ago"
 
 -
+
+### what is the problem in ip address cause this error
+
+Error: querySrv ETIMEOUT \_mongodb.\_tcp.customercluster.xyrl1tf.mongodb.net
+
+the error was in access point (access router) not the main router so i changed the DNS server address
+
+- go to control panel
+- open network and internet
+- then choose your network
+- go to properties
+- go to internet protocol version 4
+- choose the properties
+- then choose the dns server
+- then add the dns server address
+- i added 8.8.8.8 and 1.1.1.1
+- restart the computer

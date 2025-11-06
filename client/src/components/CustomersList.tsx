@@ -38,10 +38,12 @@ const CustomersList = () => {
     navigate(`/customers/edit-customer/${id}`);
   };
 
-  if (isPending) return <p>Loading...</p>;
-  if (error) return <p>Error loading customers</p>;
+  if (isPending) return <p className="text-white text-2xl">Loading...</p>;
+  if (error)
+    return <p className="text-white text-2xl">Error: {error.message}</p>;
 
-  if (!customers?.data) return <p>No customers found</p>;
+  if (!customers?.data)
+    return <p className="text-white text-2xl">No customers found</p>;
 
   return (
     <div className="bg-[#252A30] rounded-2xl p-6 overflow-auto h-full">

@@ -17,3 +17,21 @@
 
 - انى اعمل services folder الل هيحتوى على جميع customer functions فكرة كويسة جدا لل api calls
 
+## ازاى اعمل ال search باستخدام react query
+
+- هل محتاج اعمل endpoint for search in backend ولا اكتفى ب frontend
+
+# التحسينات
+
+- تحسين تنظيم الملفات
+- تحسين ال seo
+- تحسين ال performance
+- تحسين ال ui
+- إضافه ال search endpoint to backend
+- إضافه ال customer route in separate file
+- إضافه ال auth
+- تحسين ال edit and add customer
+- إضافه user ui واعتبر دى dashboard
+- إضافه role لل dashboard
+- إضافة اسم للمشروع
+- إضافة logo

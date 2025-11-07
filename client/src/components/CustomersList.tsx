@@ -10,9 +10,7 @@ const CustomersList = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  const { data: filteredCustomers } = useSearchQuery();
-
-  console.log("filteredCustomers", filteredCustomers);
+  const { data: filteredCustomers, isFetching: isSearching } = useSearchQuery();
 
   const {
     isPending,
@@ -43,12 +41,18 @@ const CustomersList = () => {
     navigate(`/customers/edit-customer/${id}`);
   };
 
-  if (isPending) return <p className="text-white text-2xl">Loading...</p>;
+  if (isPending || isSearching)
+    return <p className="text-white text-2xl">Loading...</p>;
   if (error)
     return <p className="text-white text-2xl">Error: {error.message}</p>;
 
   if (!customers?.data)
     return <p className="text-white text-2xl">No customers found</p>;
+
+  const customersList =
+    filteredCustomers?.data && filteredCustomers.data.length > 0
+      ? filteredCustomers.data
+      : customers?.data || [];
 
   return (
     <div className="bg-[#252A30] rounded-2xl p-6 overflow-auto h-full">
@@ -68,7 +72,7 @@ const CustomersList = () => {
         </thead>
 
         <tbody>
-          {customers?.data.map((customer: ICustomer, index: number) => (
+          {customersList.map((customer: ICustomer, index: number) => (
             <tr
               key={customer.id}
               className="text-gray-200 border-b border-gray-700 hover:bg-[#2F343B] transition"

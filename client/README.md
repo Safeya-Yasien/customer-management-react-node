@@ -156,6 +156,12 @@ export default defineConfig([
 - we will wait about 500 ms to search
 - i use https://usehooks.com/usedebounce library to handle the debounce
 
+# when you should use debounce
+
+- when you make search dynamic or auto when the user enter the search term
+- when you make search dynamic and you need to wait for the user to stop typing
+- but i remove useDebounce function because i make only the results appear when the user click on submit or search button
+
 # add logic to actions
 
 - add view action ✔️

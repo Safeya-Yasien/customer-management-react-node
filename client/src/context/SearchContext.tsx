@@ -30,6 +30,7 @@ const SearchProvider = ({ children }: { children: React.ReactNode }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!searchTerm.trim().length) return;
     setShouldSearch(true);
   };
 

@@ -201,6 +201,37 @@ export default defineConfig([
 
 ## Customers List
 
+### View Customer
+
 1. Customers List component is rendered
 2. Click on view button
-3. redirect
+3. redirect to customer details page which contain customer details [email, full name, country, age, gender, joined date]
+4. the page contain edit button
+5. click on edit button will redirect to edit this customer page
+6. not all fields are editable
+7. the not editable fields are [email, gender] and contain disabled cursor
+8. change the value of the not editable fields
+9. click on update customer button will not update the database
+10. display toast message if the update customer is success
+11. then after few seconds the page will redirect to customer details page
+12. you will found that values changed successfully
+
+### Delete Customer
+
+1. click on delete button will deleted the selected customer
+
+### Edit Customer
+
+1. click on edit button will redirect to edit this customer page
+2. change the value of the not editable fields
+3. click on update customer button will update the database
+4. display toast message if the update customer is success
+5. then after few seconds the page will redirect to customer details page
+
+## Add Customer
+
+1. click on add customer page in the sidebar
+   2.fill the form
+2. click on add customer button will add the customer to the database
+3. display toast message if the add customer is success
+4. then reset the form

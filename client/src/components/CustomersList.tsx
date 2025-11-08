@@ -4,7 +4,7 @@ import type { ICustomer } from "@/types/customer.types";
 import { useNavigate } from "react-router";
 import useSearchQuery from "@/hooks/useSearchQuery";
 
-const apiURL = `${import.meta.env.VITE_API_URL}/customers`;
+const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
 const CustomersList = () => {
   const queryClient = useQueryClient();
@@ -19,14 +19,14 @@ const CustomersList = () => {
   } = useQuery({
     queryKey: ["customers"],
     queryFn: async () => {
-      const response = await fetch(`${apiURL}`);
+      const response = await fetch(`${BASE_URL}/customers`);
       return await response.json();
     },
   });
 
   const deleteCustomer = useMutation({
     mutationFn: async (id: string) => {
-      return await fetch(`${apiURL}/${id}`, { method: "DELETE" });
+      return await fetch(`${BASE_URL}/customers/${id}`, { method: "DELETE" });
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["customers"] });

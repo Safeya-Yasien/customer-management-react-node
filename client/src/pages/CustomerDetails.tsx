@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams, useNavigate } from "react-router";
 import { ArrowLeft } from "lucide-react";
 
-const apiURL = `${import.meta.env.VITE_API_URL}`;
+const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
 const CustomerDetailsPage = () => {
   const { id } = useParams();
@@ -15,7 +15,7 @@ const CustomerDetailsPage = () => {
   } = useQuery({
     queryKey: ["customer", id],
     queryFn: async () => {
-      const res = await fetch(`${apiURL}/customers/${id}`);
+      const res = await fetch(`${BASE_URL}/customers/${id}`);
       return await res.json();
     },
   });

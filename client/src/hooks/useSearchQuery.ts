@@ -2,7 +2,7 @@ import { useSearch } from "@/context/useSearchContext";
 import type { ICustomer } from "@/types/customer.types";
 import { useQuery } from "@tanstack/react-query";
 
-const apiUrl = `${import.meta.env.VITE_API_URL}/customers`;
+const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
 interface ISearchResponse {
   msg: string;
@@ -17,7 +17,9 @@ const useSearchQuery = () => {
     queryKey: ["customers", search],
     queryFn: async () => {
       try {
-        const response = await fetch(`${apiUrl}/search?search=${search}`);
+        const response = await fetch(
+          `${BASE_URL}/customers/search?search=${search}`
+        );
 
         if (!response.ok) {
           throw new Error(`Request failed: ${response.status}`);

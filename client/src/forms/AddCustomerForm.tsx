@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
-const apiURL = `${import.meta.env.VITE_API_URL}/customers`;
+const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
 interface ICustomerFormProps {
   mode: "add" | "edit";
@@ -32,7 +32,7 @@ const AddCustomerForm = ({ mode, customerId }: ICustomerFormProps) => {
   } = useQuery({
     queryKey: ["customer", customerId],
     queryFn: async () => {
-      const response = await fetch(`${apiURL}/${customerId}`);
+      const response = await fetch(`${BASE_URL}/customers/${customerId}`);
       const data = await response.json();
       return data;
     },
@@ -46,7 +46,10 @@ const AddCustomerForm = ({ mode, customerId }: ICustomerFormProps) => {
   const mutation = useMutation({
     mutationFn: async (formData: ICustomerForm) => {
       const method = mode === "edit" ? "PUT" : "POST";
-      const url = mode === "edit" ? `${apiURL}/${customerId}` : `${apiURL}`;
+      const url =
+        mode === "edit"
+          ? `${BASE_URL}/customers/${customerId}`
+          : `${BASE_URL}/customers`;
       return await fetch(url, {
         method,
         headers: {

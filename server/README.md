@@ -58,6 +58,8 @@ the error was in access point (access router) not the main router so i changed t
 
 # how to search customers by multiple fields
 
+- By using $or operator from mongoose with options "i" which means case insensitive
+
 # how to solve this error any why appears <$regex has to be a string>
 
 - this error appears in searchCustomers function when i use $regex

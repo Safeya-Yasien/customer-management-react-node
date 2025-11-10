@@ -3,7 +3,7 @@ import express from "express";
 import customerRoutes from "./src/routes/customers.route";
 import cors from "cors";
 import connectDB from "./connectDB";
-import serverless from "serverless-http";
+// import serverless from "serverless-http";
 import path from "path";
 
 connectDB();
@@ -32,4 +32,4 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 });
-export default serverless(app);
+// export default serverless(app);

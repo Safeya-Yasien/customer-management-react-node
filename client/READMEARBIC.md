@@ -27,7 +27,6 @@
 - تحسين ال seo
 - تحسين ال performance
 - تحسين ال ui
-- إضافه ال search endpoint to backend
 - إضافه ال customer route in separate file
 - إضافه ال auth
 - تحسين ال edit and add customer

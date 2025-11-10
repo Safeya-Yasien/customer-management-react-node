@@ -1,28 +1,46 @@
 {
-  "regions": ["iad1"],
-  "env": {
-    "MONGO_URL": "@mern_template_db_url"
-  },
+  "version": 2,
   "builds": [
-    { "src": "server/index.js", "use": "@now/node" },
     {
       "src": "client/package.json",
-      "use": "@now/static-build",
-      "config": { "distDir": "build" }
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "server/index.ts",
+      "use": "@vercel/node"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "headers": { "cache-control": "s-maxage=0" },
-      "dest": "server/index.js"
+      "source": "/api/(.*)",
+      "destination": "/server/index.ts"
     },
     {
-      "src": "/static/(.*)",
-      "headers": { "cache-control": "s-maxage=31536000, immutable" },
-      "dest": "client/dist/$1"
+      "source": "/(.*)",
+      "destination": "/client/dist/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
     },
-
-    { "src": "/(.*)", "dest": "client/index.html" }
+    {
+      "source": "/client/dist/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
   ]
 }

@@ -27,8 +27,8 @@ app.get("{*splat}", (_, res) => {
   // res.sendFile(path.join(CLIENT_DIST_PATH, "index.html"));
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`http://localhost:${port}`);
-});
-// export default app;
+// const port = process.env.PORT || 3000;
+// app.listen(port, () => {
+//   console.log(`http://localhost:${port}`);
+// });
+export default app;

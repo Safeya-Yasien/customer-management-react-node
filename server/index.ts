@@ -1,8 +1,8 @@
 import "dotenv/config";
 import express from "express";
-import customerRoutes from "../src/routes/customers.route";
+import customerRoutes from "./src/routes/customers.route";
 import cors from "cors";
-import connectDB from "../connectDB";
+import connectDB from "./connectDB";
 import serverless from "serverless-http";
 import path from "path";
 
@@ -28,8 +28,8 @@ app.get("{*splat}", (_, res) => {
   // res.sendFile(path.join(CLIENT_DIST_PATH, "index.html"));
 });
 
-// const port = process.env.PORT || 3000;
-// app.listen(port, () => {
-//   console.log(`http://localhost:${port}`);
-// });
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`http://localhost:${port}`);
+});
 export default serverless(app);

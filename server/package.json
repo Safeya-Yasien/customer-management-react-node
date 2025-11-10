@@ -16,7 +16,8 @@
     "express": "^5.1.0",
     "express-validator": "^7.3.0",
     "mongoose": "^8.19.2",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "serverless-http": "^4.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",

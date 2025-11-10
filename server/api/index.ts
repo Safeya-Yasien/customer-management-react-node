@@ -3,6 +3,7 @@ import express from "express";
 import customerRoutes from "../src/routes/customers.route";
 import cors from "cors";
 import connectDB from "../connectDB";
+import serverless from "serverless-http";
 import path from "path";
 
 connectDB();
@@ -31,4 +32,4 @@ app.get("{*splat}", (_, res) => {
 // app.listen(port, () => {
 //   console.log(`http://localhost:${port}`);
 // });
-export default app;
+export default serverless(app);

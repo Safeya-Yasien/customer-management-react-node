@@ -26,7 +26,6 @@ const _dirname = path.resolve();
 
 app.use("/api/customers", customerRoutes);
 
-app.use(express.static(path.join(_dirname, "../client/dist")));
 app.get("{*splat}", (_, res) => {
   res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"));
 });

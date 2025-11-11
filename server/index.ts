@@ -3,10 +3,9 @@ import express from "express";
 import customerRoutes from "./src/routes/customers.route";
 import cors from "cors";
 import connectDB from "./connectDB";
-import path from "path";
 
 const mongoURL =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/customers";
+  process.env.MONGODB_URL || "mongodb://localhost:27017/customers";
 
 connectDB(mongoURL);
 
@@ -22,13 +21,8 @@ const corsOptions = {
 const app = express();
 app.use(express.json());
 app.use(cors(corsOptions));
-const _dirname = path.resolve();
 
 app.use("/api/customers", customerRoutes);
-
-app.get("{*splat}", (_, res) => {
-  res.sendFile(path.resolve(_dirname, "client", "dist", "index.html"));
-});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

@@ -4,13 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Mail, Lock, User } from "lucide-react";
 import InputField from "@/components/InputField";
 import { signupSchema, type SignupFormData } from "@/schemas/signupSchema";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
 const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
 const Signup: React.FC = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,8 +21,6 @@ const Signup: React.FC = () => {
   });
 
   const onSubmit = (data: SignupFormData) => {
-    console.log("Signup data:", data);
-
     Mutation.mutate(data);
   };
 
@@ -33,14 +32,20 @@ const Signup: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          fullName: data.fullName,
+          email: data.email,
+          password: data.password,
+        }),
       });
-
 
       return await response.json();
     },
     onSuccess: () => {
       toast.success("Account created successfully! Please log in.");
+      setTimeout(() => {
+        navigate("/auth/login");
+      }, 2000);
     },
     onError: (error) => {
       console.error("Signup error:", error);

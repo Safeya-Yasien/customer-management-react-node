@@ -2,12 +2,19 @@ import mongoose, { Schema } from "mongoose";
 import validator from "validator";
 
 interface IUser {
+  fullName: string;
   email: string;
   password: string;
   role: string;
 }
 
 const userSchema = new Schema<IUser>({
+  fullName: {
+    type: String,
+    required: [true, "Please enter a full name"],
+    unique: true,
+    lowercase: true,
+  },
   email: {
     type: String,
     required: [true, "Please enter an email"],

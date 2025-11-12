@@ -36,11 +36,12 @@ const login = async (req: any, res: any) => {
   }
 };
 
-const register = async (req: any, res: any) => {
+const signup = async (req: any, res: any) => {
   const { fullName, email, password } = req.body;
+
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ email, password: hashedPassword });
+    const newUser = new User({ fullName, email, password: hashedPassword });
     await newUser.save();
     res.status(201).json({
       msg: "User registered successfully",
@@ -70,4 +71,4 @@ const deleteAllUsers = async (req: any, res: any) => {
   }
 };
 
-export { getUsers, deleteAllUsers, login, register };
+export { getUsers, deleteAllUsers, login, signup };

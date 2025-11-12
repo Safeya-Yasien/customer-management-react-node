@@ -4,10 +4,10 @@ import {
   deleteAllUsers,
   getUsers,
   login,
-  register,
+  signup,
 } from "../controllers/users.controller";
 
-router.post("/register", register);
+router.post("/signup", signup);
 router.post("/login", login);
 router.get("/", getUsers);
 router.delete("/", deleteAllUsers);

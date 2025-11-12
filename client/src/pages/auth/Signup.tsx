@@ -5,6 +5,10 @@ import { Mail, Lock, User } from "lucide-react";
 import InputField from "@/components/InputField";
 import { signupSchema, type SignupFormData } from "@/schemas/signupSchema";
 import { Link } from "react-router";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+
+const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
 const Signup: React.FC = () => {
   const {
@@ -17,8 +21,31 @@ const Signup: React.FC = () => {
 
   const onSubmit = (data: SignupFormData) => {
     console.log("Signup data:", data);
-    // Call your signup API here
+
+    Mutation.mutate(data);
   };
+
+  const Mutation = useMutation({
+    mutationKey: ["signup"],
+    mutationFn: async (data: SignupFormData) => {
+      const response = await fetch(`${BASE_URL}/users/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+
+      return await response.json();
+    },
+    onSuccess: () => {
+      toast.success("Account created successfully! Please log in.");
+    },
+    onError: (error) => {
+      console.error("Signup error:", error);
+    },
+  });
 
   return (
     <>
@@ -57,7 +84,7 @@ const Signup: React.FC = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full py-3 rounded-xl text-white font-semibold transition duration-200 ${
+          className={`cursor-pointer w-full py-3 rounded-xl text-white font-semibold transition duration-200 ${
             isSubmitting
               ? "bg-gray-600 cursor-not-allowed"
               : "bg-indigo-500 hover:bg-indigo-600"

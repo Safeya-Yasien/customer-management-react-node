@@ -42,10 +42,11 @@ const Signup: React.FC = () => {
       return await response.json();
     },
     onSuccess: () => {
-      toast.success("Account created successfully! Please log in.");
-      setTimeout(() => {
-        navigate("/auth/login");
-      }, 2000);
+      toast.success("Account created successfully! Please log in.", {
+        onClose: () => {
+          navigate("/auth/login");
+        },
+      });
     },
     onError: (error) => {
       console.error("Signup error:", error);

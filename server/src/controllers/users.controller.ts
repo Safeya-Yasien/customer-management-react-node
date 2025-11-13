@@ -28,7 +28,7 @@ const login = async (req: any, res: any) => {
 
     res.status(200).json({
       msg: "User logged in successfully",
-      token,
+      data: { token },
       success: true,
     });
   } catch (err) {
@@ -37,11 +37,16 @@ const login = async (req: any, res: any) => {
 };
 
 const signup = async (req: any, res: any) => {
-  const { fullName, email, password } = req.body;
+  const { fullName, email, password, role } = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ fullName, email, password: hashedPassword });
+    const newUser = new User({
+      fullName,
+      email,
+      password: hashedPassword,
+      role,
+    });
     await newUser.save();
     res.status(201).json({
       msg: "User registered successfully",

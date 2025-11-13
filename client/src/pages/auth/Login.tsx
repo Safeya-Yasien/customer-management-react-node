@@ -4,9 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Mail, Lock } from "lucide-react";
 import InputField from "@/components/InputField";
 import { loginSchema, type LoginFormData } from "@/schemas/loginSchema";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-toastify";
+
+const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,8 +21,40 @@ const Login: React.FC = () => {
   });
 
   const onSubmit = (data: LoginFormData) => {
-    console.log("Login data:", data);
+    mutation.mutate(data);
   };
+
+  const mutation = useMutation({
+    mutationKey: ["login"],
+    mutationFn: async (data: LoginFormData) => {
+      const response = await fetch(`${BASE_URL}/users/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const res = await response.json();
+
+      if (!response.ok) {
+        throw new Error(res.msg || "Failed to login");
+      }
+
+      return res;
+    },
+    onSuccess: (data) => {
+      localStorage.setItem("token", data.token);
+      toast.success("Logged in successfully!", {
+        onClose: () => {
+          navigate("/", { replace: true });
+        },
+      });
+    },
+    onError: (err) => {
+      toast.error(err.message, {});
+    },
+  });
 
   return (
     <>
@@ -42,7 +79,7 @@ const Login: React.FC = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full py-3 rounded-xl text-white font-semibold transition duration-200 ${
+          className={`cursor-pointer w-full py-3 rounded-xl text-white font-semibold transition duration-200 ${
             isSubmitting
               ? "bg-gray-600 cursor-not-allowed"
               : "bg-indigo-500 hover:bg-indigo-600"

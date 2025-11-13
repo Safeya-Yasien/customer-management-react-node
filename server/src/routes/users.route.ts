@@ -6,10 +6,12 @@ import {
   login,
   signup,
 } from "../controllers/users.controller";
+import roleMiddleware from "../middlewares/roleMiddleware";
+import authMiddleware from "../middlewares/authMiddleware";
 
 router.post("/signup", signup);
 router.post("/login", login);
-router.get("/", getUsers);
-router.delete("/", deleteAllUsers);
+router.get("/", authMiddleware, roleMiddleware(["admin"]), getUsers);
+router.delete("/", authMiddleware, roleMiddleware(["admin"]), deleteAllUsers);
 
 export default router;

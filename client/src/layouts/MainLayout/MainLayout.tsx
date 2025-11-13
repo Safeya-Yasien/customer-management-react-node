@@ -12,9 +12,7 @@ const MainLayout = () => {
 
       <div className="flex-1 grid grid-rows-[70px_1fr] gap-4">
         {/* Header */}
-        <header className="bg-[#181B1F] rounded-2xl p-4">
           <Header />
-        </header>
 
         {/* Main content */}
         <main className="bg-[#252A30] rounded-2xl p-6 overflow-auto">

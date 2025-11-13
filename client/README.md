@@ -150,6 +150,12 @@ export default defineConfig([
 - when you make search dynamic and you need to wait for the user to stop typing
 - but i remove useDebounce function because i make only the results appear when the user click on submit or search button
 
+# how to get id or data from jwt
+
+- by using atob function to decode the token
+- then we will get the payload which contain the id and role
+- then we will get the id from the payload
+
 # What i used for the first time
 
 - react-query = tanstack

@@ -1,6 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { lazy } from "react";
 
+import ProtectedRoute from "@/components/ProtectedRoute";
+
 const Login = lazy(() => import("@/pages/auth/Login"));
 const Signup = lazy(() => import("@/pages/auth/Signup"));
 
@@ -25,24 +27,45 @@ const router = createBrowserRouter([
       },
       {
         path: "customers",
-        element: <CustomersPage />,
+
+        element: (
+          <ProtectedRoute>
+            <CustomersPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "customers/add-customer",
-        element: <AddCustomerPage />,
+        element: (
+          <ProtectedRoute>
+            <AddCustomerPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "customers/edit-customer/:id",
-        element: <AddCustomerPage />,
+        element: (
+          <ProtectedRoute>
+            <AddCustomerPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "customers/:id",
-        element: <CustomerDetailsPage />,
+        element: (
+          <ProtectedRoute>
+            <CustomerDetailsPage />
+          </ProtectedRoute>
+        ),
       },
 
       {
         path: "users",
-        element: <UsersPage />,
+        element: (
+          <ProtectedRoute>
+            <UsersPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

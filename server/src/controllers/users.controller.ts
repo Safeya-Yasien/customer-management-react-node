@@ -28,7 +28,7 @@ const login = async (req: any, res: any) => {
 
     res.status(200).json({
       msg: "User logged in successfully",
-      token,
+      data: { token },
       success: true,
     });
   } catch (err) {
@@ -67,6 +67,23 @@ const getUsers = async (req: any, res: any) => {
   }
 };
 
+const getUserById = async (req: any, res: any) => {
+  const { id } = req.params;
+  try {
+    const user = await User.findById(id, { __v: 0 });
+    if (!user) {
+      res
+        .status(404)
+        .json({ msg: "User not found", data: null, success: false });
+      return;
+    }
+
+    res.status(200).json({ msg: "success", data: user, success: true });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
 const deleteAllUsers = async (req: any, res: any) => {
   try {
     await User.deleteMany({});
@@ -76,4 +93,4 @@ const deleteAllUsers = async (req: any, res: any) => {
   }
 };
 
-export { getUsers, deleteAllUsers, login, signup };
+export { getUsers, deleteAllUsers, login, signup, getUserById };

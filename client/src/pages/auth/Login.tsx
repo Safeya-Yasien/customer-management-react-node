@@ -44,7 +44,7 @@ const Login: React.FC = () => {
       return res;
     },
     onSuccess: (data) => {
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("token", data.data.token);
       toast.success("Logged in successfully!", {
         onClose: () => {
           navigate("/", { replace: true });

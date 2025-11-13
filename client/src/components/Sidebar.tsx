@@ -1,7 +1,17 @@
-import { House, UserRoundPlus } from "lucide-react";
-import { NavLink } from "react-router";
+import { House, LogOut, UserRoundPlus } from "lucide-react";
+import { NavLink, useNavigate } from "react-router";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+
+    setTimeout(() => {
+      navigate("/auth/login");
+    }, 2000);
+  };
+
   return (
     <div className=" text-white">
       <h1 className="text-center text-2xl pb-6 border-b border-b-gray-500 mb-6">
@@ -70,6 +80,15 @@ const Sidebar = () => {
             <UserRoundPlus className="w-4 h-4" />
             Users
           </NavLink>
+        </li>
+        <li>
+          <button
+            onClick={handleLogout}
+            className="cursor-pointer flex items-center gap-3 px-4 py-2 rounded-lg text-gray-400 hover:text-white hover:bg-[#2A2F36] w-full text-left transition-all duration-200"
+          >
+            <LogOut className="w-4 h-4" />
+            Logout
+          </button>
         </li>
       </ul>
     </div>

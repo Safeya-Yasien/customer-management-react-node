@@ -12,12 +12,13 @@ connectDB(mongoURL);
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://cutomer-management-react-node.vercel.app",
+  "https://customer-management-react-node-pslx.vercel.app",
+  "https://customer-management-react-node.vercel.app",
 ];
 const corsOptions = {
   origin: allowedOrigins,
-  allowHeaders: ["Content-Type", "Authorization"],
-  METHODS: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   optionsSuccessStatus: 200,
 };
 

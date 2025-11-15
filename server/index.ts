@@ -13,7 +13,7 @@ connectDB(mongoURL);
 const allowedOrigins = [
   "http://localhost:5173",
   "https://customer-management-react-node.vercel.app",
-  "https://customer-management-react-node-oseo.vercel.app",
+  "https://customer-management-react-node-ixrj.vercel.app",
 ];
 const corsOptions = {
   origin: allowedOrigins,

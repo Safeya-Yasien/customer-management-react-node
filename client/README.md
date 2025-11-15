@@ -83,6 +83,7 @@ export default defineConfig([
 - enhance front structure and separate the logic into different files
 - add auth
 - deploy
+- add loading to signup and login button
 
 # why i install react query or tanstack query
 

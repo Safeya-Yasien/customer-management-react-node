@@ -26,7 +26,7 @@ const userSchema = new Schema<IUser>({
     required: [true, "Please enter a password"],
     minlength: 6,
   },
-  role: { type: String, default: "user" },
+  role: { type: String, default: "admin" },
 });
 
 const User = mongoose.model("User", userSchema);
